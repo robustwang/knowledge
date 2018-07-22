@@ -1,2 +1,2 @@
-#### install redis in docker
+#### install redis in docker 
 ocker run -p 6379:6379 --name myredis -v /Users/XXXXXX/docker/redis/redis.conf:/etc/redis/redis.conf -v /Users/XXXXXX/docker/redis/data:/data -d redis:latest redis-server /etc/redis/redis.conf --appendonly yes
