@@ -6,7 +6,7 @@ public class InsertionSort {
     public void insertionSort(int[] a) {
         if (null == a || a.length < 2) {
             return;
-        } 
+        }
         for (int i = 1; i < a.length; i++) {
             // 暂存当前值
             int temp = a[i];
