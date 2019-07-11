@@ -1,11 +1,16 @@
 package com.robustwang.example.algorithm;
 
 public class Bsearch {
-
+    /**
+     *
+     * @param a
+     * @param n
+     * @param value
+     * @return
+     */
     public int bsearch(int[] a, int n, int value) {
         int low = 0;
         int high = n - 1;
-
         while (low <= high) {
             int mid = (low + high) / 2;
             if (a[mid] == value) {
