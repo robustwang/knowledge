@@ -1,7 +1,13 @@
 package com.robustwang.example.algorithm;
 
 public class Insertion {
-
+    /**
+     *
+     *
+     *
+     * @param a
+     * @param n
+     */
     // 插入排序，a 表示数组，n 表示数组大小
     public void insertionSort(int[] a, int n) {
         if (n <= 1) return;

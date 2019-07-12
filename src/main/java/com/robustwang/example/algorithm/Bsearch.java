@@ -2,7 +2,7 @@ package com.robustwang.example.algorithm;
 
 public class Bsearch {
     /**
-     *123
+     *
      * @param a
      * @param n
      * @param value
