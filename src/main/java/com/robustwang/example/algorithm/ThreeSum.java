@@ -17,8 +17,8 @@ public class ThreeSum {
                 break;
             } // 如果当前数字大于0，则三数之和一定大于0，所以结束循环
             if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;
-            } // 去重
+                 // 去重continue;
+        }
             int L = i + 1;
             int R = len - 1;
             while (L < R) {
