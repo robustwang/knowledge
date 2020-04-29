@@ -1,4 +1,4 @@
-package com.robustwang.example.concurrent.cf;
+package com.robustwang.example.thread.juc.cf;
 
 import static java.util.concurrent.CompletableFuture.completedFuture;
 import static java.util.concurrent.TimeUnit.SECONDS;

@@ -1,4 +1,4 @@
-package com.robustwang.example.concurrent.optional;
+package com.robustwang.example.thread.optional;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;

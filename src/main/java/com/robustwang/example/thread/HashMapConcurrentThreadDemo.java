@@ -1,4 +1,4 @@
-package com.robustwang.example.concurrent;
+package com.robustwang.example.thread;
 
 import java.util.HashMap;
 

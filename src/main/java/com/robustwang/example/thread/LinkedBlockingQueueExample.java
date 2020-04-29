@@ -1,24 +1,26 @@
-package com.robustwang.example.concurrent;
+package com.robustwang.example.thread;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @Author wangjun
- * @Date 2018/6/4 14:03
+ * @Date 2018/6/4 14:16
+ *
  */
-public class ConcurrentLinkedQueueExample {
+public class LinkedBlockingQueueExample {
 
-    private final static Logger logger = LoggerFactory.getLogger(ConcurrentLinkedQueueExample.class);
-
+    private final static Logger logger = LoggerFactory.getLogger(LinkedBlockingQueueExample.class);
 
     /**
-     * 非堵塞 消费者可能 null
+     * 堵塞
+     * @param args
      */
     public static void main(String args[]) {
-        ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<String>();
+        LinkedBlockingQueue<String> queue = new LinkedBlockingQueue<String>();
+
         for (int i = 0; i < 2; i++) {
             Productor task = new Productor(queue);
             Thread t = new Thread(task, "生产者线程" + i);
@@ -31,30 +33,10 @@ public class ConcurrentLinkedQueueExample {
         }
     }
 
-    static class Consumer implements Runnable {
-        private ConcurrentLinkedQueue<String> queue;
-
-        public Consumer(ConcurrentLinkedQueue<String> queue) {
-            this.queue = queue;
-        }
-
-        @Override
-        public void run() {
-            while (true) {
-                try {
-                    Thread.currentThread().sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                logger.info("消费者-->  " + queue.poll());
-            }
-        }
-    }
-
     static class Productor implements Runnable {
-        private ConcurrentLinkedQueue<String> queue;
+        private LinkedBlockingQueue<String> queue;
 
-        public Productor(ConcurrentLinkedQueue<String> queue) {
+        public Productor(LinkedBlockingQueue<String> queue) {
             this.queue = queue;
         }
 
@@ -69,6 +51,30 @@ public class ConcurrentLinkedQueueExample {
                 String content = String.valueOf(System.currentTimeMillis());
                 logger.info("生产者==>  " + content);
                 queue.add(content);
+            }
+        }
+    }
+
+    static class Consumer implements Runnable {
+        private LinkedBlockingQueue<String> queue;
+
+        public Consumer(LinkedBlockingQueue<String> queue) {
+            this.queue = queue;
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    Thread.currentThread().sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    logger.info("消费者-->  " + queue.take());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

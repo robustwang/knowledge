@@ -1,4 +1,4 @@
-package com.robustwang.example.threadpool;
+package com.robustwang.example.thread;
 
 import net.sf.ehcache.util.NamedThreadFactory;
 
@@ -20,7 +20,6 @@ public class ThreadChangeDemo {
         dynamicModifyExecutor();
     }
 
-
     private static ThreadPoolExecutor buildThreadPoolExecutor() {
         return new ThreadPoolExecutor(2, 5, 60, TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>(10), new NamedThreadFactory("测试多线程"));
@@ -33,7 +32,7 @@ public class ThreadChangeDemo {
                 threadPoolStatus(executor, "创建任务");
                 try {
                     TimeUnit.SECONDS.sleep(10);
-                    System.out.println("======================================================================");
+                    System.out.println(Thread.currentThread().getName() +"======================================================================");
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
