@@ -15,10 +15,13 @@ public class SemaphoreExample {
 
         for (int i = 0; i < threadCount; i++) {
             final int threadnum = i;
+            int finalI = i;
             threadPool.execute(() -> {
                 try {
+                    System.out.println("semaphore start "+ finalI);
                     semaphore.acquire();// 获取一个许可，所以可运行线程数量为20/1=20
                     test(threadnum);
+                    System.out.println("semaphore end "+ finalI);
                     semaphore.release();// 释放一个许可
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
@@ -32,8 +35,8 @@ public class SemaphoreExample {
     }
 
     public static void test(int threadnum) throws InterruptedException {
-        Thread.sleep(1000);// 模拟请求的耗时操作
+        Thread.sleep(5000);// 模拟请求的耗时操作
         System.out.println("threadnum:" + threadnum);
-        Thread.sleep(1000);// 模拟请求的耗时操作
+        Thread.sleep(5000);// 模拟请求的耗时操作
     }
 }

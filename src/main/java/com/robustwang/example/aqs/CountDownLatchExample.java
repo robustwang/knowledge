@@ -25,19 +25,20 @@ public class CountDownLatchExample {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 } finally {
+                    System.out.println("finally "+ Thread.currentThread().getName());
                     countDownLatch.countDown();// 表示一个请求已经被完成
                 }
 
             });
         }
         countDownLatch.await();
-        threadPool.shutdown();
+//        threadPool.shutdown();
         System.out.println("finish");
     }
 
     public static void test(int threadnum) throws InterruptedException {
-        Thread.sleep(1000);// 模拟请求的耗时操作
+        Thread.sleep(10000);// 模拟请求的耗时操作
         System.out.println("threadnum:" + threadnum);
-        Thread.sleep(1000);// 模拟请求的耗时操作
+        Thread.sleep(10000);// 模拟请求的耗时操作
     }
 }

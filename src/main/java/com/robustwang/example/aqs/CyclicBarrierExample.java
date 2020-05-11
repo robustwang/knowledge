@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 public class CyclicBarrierExample {
     private static final int threadCount = 550;
     // 需要同步的线程数量
-    private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(5);
+    private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
 
     public static void main(String[] args) throws InterruptedException {
         // 创建线程池
@@ -18,10 +18,8 @@ public class CyclicBarrierExample {
                 try {
                     test(threadNum);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (BrokenBarrierException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             });
