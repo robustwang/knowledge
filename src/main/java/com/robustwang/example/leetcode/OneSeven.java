@@ -65,8 +65,8 @@ public class OneSeven {
 //        System.out.println(c);
 
 
-        String aa = "00";
-        char t = aa.charAt(1);
-        System.out.println(t);
+//        String aa = "00";
+//        char t = aa.charAt(1);
+//        System.out.println(t);
     }
 }
