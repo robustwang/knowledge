@@ -18,10 +18,24 @@ public class Bubble {
         }
     }
 
+    public void bubbleSort2(int[] a, int n) {
+        int i, j;
+        for (i = n - 1; i > 0; i--) {
+            for (j = 0; j < i; j++) {
+                if(a[j] > a[j+1]){
+                    int temp = a[j];
+                    a[j]= a[j+1];
+                    a[j+1]= temp;
+                }
+            }
+        }
+        int [] result = a;
+    }
+
 
     public static void main(String[] args) {
         Bubble bubble = new Bubble();
         int[] a = new int[]{3, 2, 7, 4, 5, 1, 6};
-        bubble.bubbleSort(a, 7);
+        bubble.bubbleSort2(a, 7);
     }
 }
