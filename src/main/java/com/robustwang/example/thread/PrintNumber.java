@@ -11,12 +11,12 @@ public class PrintNumber {
                 try {
                     for (int i = 0; i < 100; i++) {
                         synchronized (lock) {
+                            System.out.println(state);
                             while (state % 3 != 0) {
                                 lock.wait();
                             }
                             System.out.println("A");
                             state++;
-
                             lock.notifyAll();
                         }
                     }
@@ -31,6 +31,7 @@ public class PrintNumber {
                 try {
                     for (int i = 0; i < 100; i++) {
                         synchronized (lock) {
+                            System.out.println(state);
                             while (state % 3 != 1) {
                                 lock.wait();
                             }
@@ -51,6 +52,7 @@ public class PrintNumber {
                 try {
                     for (int i = 0; i < 100; i++) {
                         synchronized (lock) {
+                            System.out.println(state);
                             while (state % 3 != 2) {
                                 lock.wait();
                             }
